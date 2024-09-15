@@ -10,29 +10,56 @@ const int X_TURN = 0;
 const int O_TURN = 1;
 
 void userInput(char &row, int &col);
+void makeBoard(char board[3][3]);
 
 int main() {
-  int board[3][3];
-  char rowIn = 'z';
-  int colIn = 0;
+  char board[3][3] ={ {' ',' ',' '},
+		      {' ',' ',' '},
+		      {' ',' ',' '} };
+  int row = 0;
+  char rowIn = ' ';
+  int col = 0;
 
-  if (rowIn == 'a' || rowIn == 'b' || rowIn == 'c') {
-    
+  makeBoard(board);
+
+  cout << "Enter a row (a-c) and column (1-3)" << endl;
+  //add checking for invalid thigns
+
+  cin >> rowIn >> col;
+
+  col--; //aline with array starting at 0
+  if (rowIn == 'a') {
+    row = 0;
+  } else if (rowIn == 'b') {
+    row = 1;
+  } else if (rowIn == 'c') {
+    row = 2;
+  } else {
+    cout << "Invalid row input" << endl;
   }
 
-
+  cout << row << col;
 
   
   return 0;
 }
 
+void makeBoard(char board[3][3]) {
+  for (int x = 0; x < 3; x++) {
+    for (int y = 0; y < 3; y++) {
+      cout << board[x][y]; //print out a column  
+    }
+    cout << "\n"; 
+  }
+}
+
 void userInput(char &row, int &col) {
   cout << "enter the row you want" << endl;
-  cin >> rowIn;
-  if (rowIn == 'a' || rowIn == 'b' || rowIn == 'c') {
+  cin >> row;
+  if (row == 'a' || row == 'b' || row == 'c') {
     
   }
-  cout << rowIn << endl;
+  cout << row << endl;
   cout << "enter the column you want" << endl;
-  cin >> colIn;
+  cin >> col;
 }
