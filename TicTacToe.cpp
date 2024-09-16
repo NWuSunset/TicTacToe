@@ -63,10 +63,18 @@ int main() {
 }
 
 void makeBoard(char board[3][3]) {
+  int rowNum = 0;
+  cout << " " << "1 2 3" << endl;
   for (int x = 0; x < 3; x++) {
+    if (rowNum == 0) {cout << "a ";}
+    if (rowNum == 1) {cout << "b ";}
+    if (rowNum == 2) {cout << "c ";}
+    //cout << "\n";
     for (int y = 0; y < 3; y++) {
+      
       cout << board[x][y]; //print out a column  
     }
+    rowNum++;
     cout << "\n"; 
   }
 }
