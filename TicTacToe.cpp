@@ -15,8 +15,11 @@ int main() {
   char rowIn = ' ';
   int col = -1;
   char player = 'X'; //X is starting player
-  int turns;
+  int turns = 0;
   bool gameStatus = true;
+  int xWins = 0;
+  int oWins = 0;
+  int ties = 0;
   
   while (gameStatus) {
     makeBoard(board); //print board to start a turn
@@ -61,13 +64,17 @@ int main() {
     if (checkWin(player, board)) {
       makeBoard(board);
       cout << player << " Wins!" << endl;
+      (player == 'X') ? xWins++ : oWins++; //add to the total win counter
+      cout << "X Wins: " << xWins << "    O Wins: " << oWins << "    Ties: " << ties << endl;  
       if (playAgain()) {
 	resetBoard(board);
+	turns = 0;
       } else {
 	gameStatus = false;
       }
     }
 
+    turns++;
     //Switch players
     player = (player == 'X') ? 'O' : 'X'; //if player == X then swtich O if not switch X
 
@@ -75,8 +82,11 @@ int main() {
   if (turns == 9 && !checkWin('X', board) && !checkWin('X', board)) {
     makeBoard(board);
     cout << "Tie" << endl;
+    ties++;
+    cout << "X Wins: " << xWins << "    O Wins: " << oWins << "    Ties: " << ties << endl;
     if (playAgain()) {
       resetBoard(board);
+      turns = 0;
     } else {
       gameStatus = false;
     }
