@@ -143,7 +143,7 @@ bool checkWin(char player, char board[3][3]) {
     //horizontal
     if (board[0][i] == player && board[1][i] == player && board[2][i] == player) {
       return true;
-    } else if (board[i][0] == player && board[i][1] == player && board[i][2]) { //vertical
+    } else if (board[i][0] == player && board[i][1] == player && board[i][2] == player) { //vertical
       return true;
     }
   }
